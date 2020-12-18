@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+
+html,
+body {
+  font-family: "Comfortaa", sans-serif;
+  background-color: #000000;
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  color: #ffffff;
+}
+
+button {
+  font-family: "Comfortaa", sans-serif;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "react-ts",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "@types/react": "16.14.2",
+    "@types/react-dom": "16.9.10",
+    "polished": "4.0.5",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-is": ">= 16.8.0",
+    "styled-components": "^5.2.1",
+    "zustand": "3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "react-scripts-ts": "latest"
+  }
+}
