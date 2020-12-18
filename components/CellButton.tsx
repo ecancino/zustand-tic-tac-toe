@@ -12,14 +12,15 @@ type CellButtonParams = {
 };
 
 export function CellButton({ row, column, className }: CellButtonParams) {
-  const [grid, setTurn] = useStore(state => [state.grid, state.setTurn]);
+  const [grid, dispatch] = useStore(state => [state.grid, state.dispatch]);
+
   const cellKey = `${row}-${column}` as Cell;
   const cellPlayer = grid[cellKey];
   return (
     <Button
       className={className}
       disabled={cellPlayer}
-      onClick={() => setTurn(cellKey)}
+      onClick={() => dispatch({ type: "SET_TURN", payload: cellKey })}
       dangerouslySetInnerHTML={{
         __html: cellPlayer ? cellPlayer : "&nbsp;"
       }}

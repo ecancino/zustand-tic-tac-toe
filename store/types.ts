@@ -15,6 +15,11 @@ export type Cell =
 
 export type Grid = Record<Cell, Player>;
 
+export type Action = {
+  type: string;
+  payload: any;
+};
+
 export type State = {
   status: Status;
   feedback: string;
@@ -22,6 +27,5 @@ export type State = {
   rows: number;
   columns: number;
   grid: Grid;
-  startGame: (state: State) => void;
-  setTurn: (cell: Cell) => void;
+  dispatch: (action: Action) => void;
 };

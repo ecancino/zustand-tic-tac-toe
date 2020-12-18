@@ -1,5 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-export default function Repeat({ length, children }) {
-  return <>{Array.from({ length }, (_, row) => children(row))}</>;
+type RepeatParams = {
+  length: number;
+  children: (row: number) => JSX.Element;
+};
+
+export default function Repeat({ length, children }: RepeatParams) {
+  return (
+    <Fragment>{Array.from({ length }, (_, row) => children(row))}</Fragment>
+  );
 }

@@ -9,17 +9,15 @@ type FeedBackParams = {
 };
 
 export function FeedBack({ className }: FeedBackParams) {
-  const [feedback, startGame] = useStore(state => [
+  const [feedback, dispatch] = useStore(state => [
     state.feedback,
-    state.startGame
+    state.dispatch
   ]);
   return (
     <div className={className}>
       <span>
         <h1>{feedback}</h1>
-        <Button background="#ffffff" onClick={startGame}>
-          Start
-        </Button>
+        <Button onClick={() => dispatch({ type: "START" })}>Start</Button>
       </span>
     </div>
   );
