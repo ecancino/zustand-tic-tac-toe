@@ -15,7 +15,9 @@ export default function Columns({ row }: ColumnsParams) {
     <tr key={row}>
       <Repeat
         length={columns}
-        children={(column: number) => <Cell row={row} column={column} />}
+        children={(column: number) => (
+          <Cell key={`${row}-${column}`} row={row} column={column} />
+        )}
       />
     </tr>
   );

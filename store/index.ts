@@ -1,5 +1,5 @@
 import create from "zustand";
-import { redux } from "zustand/middleware";
+import { redux, devtools } from "zustand/middleware";
 
 import { win, tie } from "./end-game";
 import { State, Grid, Cell } from "./types";
@@ -29,7 +29,8 @@ function reducer(
       return {
         status: "ACTIVE",
         grid: {} as Grid,
-        player: "X"
+        player: "X",
+        feedback: null
       };
     }
     case Types.VICTORY: {
@@ -53,11 +54,17 @@ function reducer(
       };
 
       if (win(updatedGrid, player)) {
-        return dispatch({ type: "VICTORY", payload: updatedGrid });
+        return dispatch({
+          type: "VICTORY",
+          payload: updatedGrid
+        });
       }
 
       if (tie(updatedGrid, rows, columns)) {
-        return dispatch({ type: "TIE", payload: updatedGrid });
+        return dispatch({
+          type: "TIE",
+          payload: updatedGrid
+        });
       }
 
       return {
@@ -68,4 +75,4 @@ function reducer(
   }
 }
 
-export const useStore = create(redux(reducer, state));
+export const useStore = create(devtools(redux(reducer, state)));
