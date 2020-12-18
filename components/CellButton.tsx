@@ -2,12 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 import Button from "./Button";
-
 import { useStore } from "../store/index";
+import { Cell } from "../store/types";
 
-export function CellButton({ row, column, className }) {
+type CellButtonParams = {
+  row: number;
+  column: number;
+  className: string;
+};
+
+export function CellButton({ row, column, className }: CellButtonParams) {
   const [grid, setTurn] = useStore(state => [state.grid, state.setTurn]);
-  const cellKey = `${row}-${column}`;
+  const cellKey = `${row}-${column}` as Cell;
   const cellPlayer = grid[cellKey];
   return (
     <Button

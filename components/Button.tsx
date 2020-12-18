@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { transparentize } from "polished";
 
-const Button = styled.button.attrs(props => ({
-  background: "#ffffff"
-}))`
+const Button = styled.button.attrs(() => ({ background: "#ffffff" }))`
   background: ${props => transparentize(0.25, props.background)};
   color: #000000;
   transition: all 0.3s ease-in-out;

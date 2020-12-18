@@ -2,10 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import Button from "./Button";
-
 import { useStore } from "../store/index";
 
-export function FeedBack({ className }) {
+type FeedBackParams = {
+  className: string;
+};
+
+export function FeedBack({ className }: FeedBackParams) {
   const [feedback, startGame] = useStore(state => [
     state.feedback,
     state.startGame

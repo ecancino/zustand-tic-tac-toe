@@ -1,16 +1,22 @@
 import create from "zustand";
 
 import { win, tie } from "./end-game";
+import { State, Grid, Cell } from "./types";
 
-export const useStore = create(set => ({
+export const useStore = create<State>(set => ({
   status: "INTRO",
   feedback: "TIC TAC TOE",
   player: "X",
   rows: 3,
   columns: 3,
-  grid: {},
-  startGame: () => set(() => ({ status: "ACTIVE", grid: {}, player: "X" })),
-  setTurn: cell => {
+  grid: {} as Grid,
+  startGame: () =>
+    set(() => ({
+      status: "ACTIVE",
+      grid: {} as Grid,
+      player: "X"
+    })),
+  setTurn: (cell: Cell) => {
     return set(({ grid, player, rows, columns }) => {
       const updatedGrid = {
         ...grid,

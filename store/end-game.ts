@@ -1,23 +1,30 @@
-export const win = (grid, player) => {
+import { Grid, Player, Cell } from "./types";
+
+const validateTrio = (grid: Grid, player: Player) => (trio: Cell[]): boolean =>
+  trio.every(cell => grid[cell] === player);
+
+export const win = (grid: Grid, player: Player) => {
+  const validate = validateTrio(grid, player);
+
   return (
     // Top Row
-    (grid["0-0"] === player && grid["0-1"] === player && grid["0-2"] === player) ||
+    validate(["0-0", "0-1", "0-2"]) ||
     // Middle Row
-    (grid["1-0"] === player && grid["1-1"] === player && grid["1-2"] === player) ||
+    validate(["1-0", "1-1", "1-2"]) ||
     // Bottom Row
-    (grid["2-0"] === player && grid["2-1"] === player && grid["2-2"] === player) ||
+    validate(["2-0", "2-1", "2-2"]) ||
     // Left Column
-    (grid["0-0"] === player && grid["1-0"] === player && grid["2-0"] === player) ||
+    validate(["0-0", "1-0", "2-0"]) ||
     // Middle Column
-    (grid["0-1"] === player && grid["1-1"] === player && grid["2-1"] === player) ||
+    validate(["0-1", "1-1", "2-1"]) ||
     // Right Column
-    (grid["0-2"] === player && grid["1-2"] === player && grid["2-2"] === player) ||
+    validate(["0-2", "1-2", "2-2"]) ||
     // Top Left -> Bottom Right
-    (grid["0-0"] === player && grid["1-1"] === player && grid["2-2"] === player) ||
+    validate(["0-0", "1-1", "2-2"]) ||
     // Bottom Left -> Top Right
-    (grid["0-2"] === player && grid["1-1"] === player && grid["2-0"] === player)
+    validate(["0-2", "1-1", "2-0"])
   );
 };
 
-export const tie = (grid, rows, columns) =>
+export const tie = (grid: Grid, rows: number, columns: number) =>
   Object.keys(grid).length >= rows * columns;
