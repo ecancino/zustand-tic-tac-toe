@@ -48,7 +48,7 @@ function reducer(
       };
     }
     case Types.SET_TURN: {
-      const updatedGrid = {
+      const updatedGrid: Grid = {
         ...grid,
         [payload as Cell]: player
       };

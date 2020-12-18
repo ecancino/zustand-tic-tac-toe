@@ -9,15 +9,15 @@ type FeedBackParams = {
 };
 
 export function FeedBack({ className }: FeedBackParams) {
-  const [feedback, dispatch] = useStore(state => [
+  const [feedback, start] = useStore(state => [
     state.feedback,
-    state.dispatch
+    () => state.dispatch({ type: "START" })
   ]);
   return (
     <div className={className}>
       <span>
         <h1>{feedback}</h1>
-        <Button onClick={() => dispatch({ type: "START" })}>Start</Button>
+        <Button onClick={start}>Start</Button>
       </span>
     </div>
   );
@@ -40,11 +40,6 @@ export default styled(FeedBack)`
   display: flex;
   align-items: center;
   justify-content: space-around;
-
-  span {
-    display: inline-block;
-    margin: 0 0;
-  }
 
   button {
     font-size: 10vw;
