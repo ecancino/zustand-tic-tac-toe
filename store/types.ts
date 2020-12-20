@@ -2,6 +2,13 @@ export type Status = "INTRO" | "ACTIVE" | "VICTORY" | "TIE";
 
 export type Player = "X" | "O";
 
+export enum Types {
+  START = "START",
+  VICTORY = "VICTORY",
+  TIE = "TIE",
+  SET_TURN = "SET_TURN"
+}
+
 export type Cell =
   | "0-0"
   | "0-1"
@@ -27,5 +34,5 @@ export type State = {
   rows: number;
   columns: number;
   grid: Grid;
-  dispatch: (action: Action) => void;
+  dispatch?: (action: Action) => void;
 };
